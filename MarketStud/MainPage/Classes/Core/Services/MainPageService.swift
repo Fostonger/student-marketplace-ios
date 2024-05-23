@@ -92,4 +92,9 @@ final class MainPageService {
             }
         }
     }
+    
+    func createChat(_ chat: Chat, completion: @escaping (Result<Chat, APIError>) -> Void) {
+        let endpoint = ChatEndpoint.createChat
+        client.fetch(with: endpoint, parameters: chat, responseType: Chat.self, completion: completion)
+    }
 }

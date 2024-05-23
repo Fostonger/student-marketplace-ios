@@ -29,7 +29,11 @@ final class LoginService: ILoginService {
     func register(model: RegisterModel, completion: @escaping (Result<Void, APIError>) -> Void) {
         let endpoint = AuthEndpoint.register
         
-        apiClient.fetch(with: endpoint, parameters: model, responseType: AuthResponse.self) { result in
+        apiClient.fetch(
+            with: endpoint,
+            parameters: model,
+            responseType: AuthResponse.self
+        ) { result in
             switch result {
             case .success:
                 completion(.success(()))
@@ -42,7 +46,11 @@ final class LoginService: ILoginService {
     func login(model: LoginModel, completion: @escaping (Result<Void, APIError>) -> Void) {
         let endpoint = AuthEndpoint.login
         
-        apiClient.fetch(with: endpoint, parameters: model, responseType: AuthResponse.self) { result in
+        apiClient.fetch(
+            with: endpoint,
+            parameters: model,
+            responseType: AuthResponse.self
+        ) { result in
             switch result {
             case .success:
                 completion(.success(()))

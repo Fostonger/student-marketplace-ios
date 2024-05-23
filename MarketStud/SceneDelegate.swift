@@ -15,7 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private var apiClient: APIClient!
     private var appState: UserDefaultAppState!
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         appState = UserDefaultAppState(with: UserDefaults.standard)
@@ -47,8 +51,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func navigateToMainPage() {
+        var chatDeeplink: ChatDeeplink? = nil
+        
+        let chatListAssembly = ChatListAssembly(apiClient: apiClient, userId: appState.userId!) { newChatDeeplink in
+            chatDeeplink = newChatDeeplink
+        }
+        
         let mainPageService = MainPageService(client: apiClient, storage: storage)
-        let mainPageAssembly = MainPageAssembly(service: mainPageService)
+        let mainPageAssembly = MainPageAssembly(service: mainPageService, userId: appState.userId!, chatDeeplink: chatDeeplink)
         
         let createItemService = CreateItemService(client: apiClient, isNew: true, userId: appState.userId!)
         let createItemAssembly = CreateItemAssembly(service: createItemService)
@@ -66,10 +76,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             logoutHandler: logoutHandler,
             createItemAssembly: createItemAssemblyForProfile
         )
+        
         let mainTabBarController = MainTabBarController(
             mainPageAssembly: mainPageAssembly,
             createItemAssembly: createItemAssembly,
-            profileAssembly: profileAssembly
+            profileAssembly: profileAssembly,
+            chatListAssembly: chatListAssembly
         )
         window?.rootViewController = mainTabBarController
     }

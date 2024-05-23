@@ -2,12 +2,15 @@ import UIKit
 
 class ItemDetailsRouter {
     private weak var viewController: UIViewController?
+    private let chatDeeplink: ChatDeeplink?
     
-    init(viewController: UIViewController) {
+    init(viewController: UIViewController, chatDeeplink: ChatDeeplink?) {
         self.viewController = viewController
+        self.chatDeeplink = chatDeeplink
     }
     
-    func navigateToChat(with sellerId: Int64) {
+    func navigateTo(chat: Chat) {
+        chatDeeplink?.openChatFromDeeplink(chat)
         viewController?.tabBarController?.selectedIndex = 2
     }
 }

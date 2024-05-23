@@ -12,4 +12,8 @@ struct Message: Codable {
     let senderId: Int64
     let message: String
     let seqNumber: Int64
+    
+    private enum CodingKeys : String, CodingKey {
+        case chatId = "chat_id", senderId = "sender_id", message, seqNumber = "seq_number"
+    }
 }

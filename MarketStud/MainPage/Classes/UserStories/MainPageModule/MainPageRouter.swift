@@ -3,11 +3,12 @@ import UIKit
 class MainPageRouter {
     private let filterAssembly: FilterAssembly
     private weak var viewController: UIViewController?
+    private let itemDetailsAssembly: ItemDetailsAssembly
     
-    init(viewController: UIViewController, filterAssembly: FilterAssembly) {
+    init(viewController: UIViewController, filterAssembly: FilterAssembly, itemDetailsAssembly: ItemDetailsAssembly) {
         self.viewController = viewController
         self.filterAssembly = filterAssembly
-        
+        self.itemDetailsAssembly = itemDetailsAssembly
     }
     
     func navigateToFilters(currentFilter: SearchFilter) {
@@ -16,7 +17,7 @@ class MainPageRouter {
     }
     
     func navigateToDetails(with item: Item, image: UIImage) {
-        let detailsView = ItemDetailsAssembly().assemble(with: item, image: image)
+        let detailsView = itemDetailsAssembly.assemble(with: item, image: image)
         viewController?.navigationController?.pushViewController(detailsView, animated: true)
     }
 }

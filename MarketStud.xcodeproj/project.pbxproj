@@ -66,10 +66,8 @@
 		0579E4C72BFA594600E5500D /* CreateItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4C62BFA594600E5500D /* CreateItemService.swift */; };
 		0579E4C92BFA5B9800E5500D /* CreateItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4C82BFA5B9800E5500D /* CreateItemRouter.swift */; };
 		0579E4CB2BFA61C200E5500D /* CreateItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4CA2BFA61C200E5500D /* CreateItemAssembly.swift */; };
-		0579E4D42BFA8C2400E5500D /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4D32BFA8C2400E5500D /* WebSocketService.swift */; };
 		0579E4D72BFA8C4000E5500D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4D62BFA8C4000E5500D /* Message.swift */; };
 		0579E4DA2BFA8CC400E5500D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4D92BFA8CC400E5500D /* Chat.swift */; };
-		0579E4DC2BFA910F00E5500D /* ChatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4DB2BFA910F00E5500D /* ChatListService.swift */; };
 		0579E4DE2BFA912E00E5500D /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4DD2BFA912E00E5500D /* ChatListView.swift */; };
 		0579E4E02BFA915F00E5500D /* ChatListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4DF2BFA915F00E5500D /* ChatListPresenter.swift */; };
 		0579E4E22BFA917200E5500D /* ChatListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4E12BFA917200E5500D /* ChatListRouter.swift */; };
@@ -83,6 +81,8 @@
 		0579E4F82BFB460700E5500D /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4F72BFB460700E5500D /* ProfilePresenter.swift */; };
 		0579E4FA2BFB461A00E5500D /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4F92BFB461A00E5500D /* ProfileRouter.swift */; };
 		0579E4FC2BFB549800E5500D /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4FB2BFB549800E5500D /* ProfileAssembly.swift */; };
+		0579E4FE2BFE587B00E5500D /* ChatListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4FD2BFE587B00E5500D /* ChatListTableView.swift */; };
+		0579E5002BFE58DA00E5500D /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579E4FF2BFE58DA00E5500D /* MessageTableViewCell.swift */; };
 		5835A3D1F231EF68F8700377 /* Pods_MarketStud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C804CF9649D88FAD003377A /* Pods_MarketStud.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,10 +148,8 @@
 		0579E4C62BFA594600E5500D /* CreateItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemService.swift; sourceTree = "<group>"; };
 		0579E4C82BFA5B9800E5500D /* CreateItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemRouter.swift; sourceTree = "<group>"; };
 		0579E4CA2BFA61C200E5500D /* CreateItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemAssembly.swift; sourceTree = "<group>"; };
-		0579E4D32BFA8C2400E5500D /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		0579E4D62BFA8C4000E5500D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0579E4D92BFA8CC400E5500D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		0579E4DB2BFA910F00E5500D /* ChatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListService.swift; sourceTree = "<group>"; };
 		0579E4DD2BFA912E00E5500D /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		0579E4DF2BFA915F00E5500D /* ChatListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListPresenter.swift; sourceTree = "<group>"; };
 		0579E4E12BFA917200E5500D /* ChatListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListRouter.swift; sourceTree = "<group>"; };
@@ -165,6 +163,8 @@
 		0579E4F72BFB460700E5500D /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		0579E4F92BFB461A00E5500D /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		0579E4FB2BFB549800E5500D /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
+		0579E4FD2BFE587B00E5500D /* ChatListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableView.swift; sourceTree = "<group>"; };
+		0579E4FF2BFE58DA00E5500D /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		2C804CF9649D88FAD003377A /* Pods_MarketStud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketStud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		611264CBFABBB3C64B36E1C7 /* Pods-MarketStud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketStud.debug.xcconfig"; path = "Target Support Files/Pods-MarketStud/Pods-MarketStud.debug.xcconfig"; sourceTree = "<group>"; };
 		F33A01113E38785DD7CF0F43 /* Pods-MarketStud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketStud.release.xcconfig"; path = "Target Support Files/Pods-MarketStud/Pods-MarketStud.release.xcconfig"; sourceTree = "<group>"; };
@@ -575,6 +575,7 @@
 				0579E4DF2BFA915F00E5500D /* ChatListPresenter.swift */,
 				0579E4E12BFA917200E5500D /* ChatListRouter.swift */,
 				0579E4E32BFA91A000E5500D /* ChatListAssembly.swift */,
+				0579E4FD2BFE587B00E5500D /* ChatListTableView.swift */,
 			);
 			path = ChatsListModel;
 			sourceTree = "<group>";
@@ -585,6 +586,7 @@
 				0579E4E72BFA91EB00E5500D /* ChatView.swift */,
 				0579E4E92BFA920800E5500D /* ChatPresenter.swift */,
 				0579E4EB2BFA923A00E5500D /* ChatAssembly.swift */,
+				0579E4FF2BFE58DA00E5500D /* MessageTableViewCell.swift */,
 			);
 			path = ChatModel;
 			sourceTree = "<group>";
@@ -592,8 +594,6 @@
 		0579E4D22BFA8C0D00E5500D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0579E4D32BFA8C2400E5500D /* WebSocketService.swift */,
-				0579E4DB2BFA910F00E5500D /* ChatListService.swift */,
 				0579E4E52BFA91CA00E5500D /* ChatService.swift */,
 			);
 			path = Services;
@@ -807,9 +807,9 @@
 				0579E4632BF81E7E00E5500D /* RegisterViewController.swift in Sources */,
 				0579E46D2BF81E7E00E5500D /* AppState.swift in Sources */,
 				0579E4BB2BFA492900E5500D /* ItemDetailsAssembly.swift in Sources */,
+				0579E5002BFE58DA00E5500D /* MessageTableViewCell.swift in Sources */,
 				0579E4E82BFA91EB00E5500D /* ChatView.swift in Sources */,
 				0579E2E52BF8178400E5500D /* ViewController.swift in Sources */,
-				0579E4D42BFA8C2400E5500D /* WebSocketService.swift in Sources */,
 				0579E49A2BF81E7E00E5500D /* FetchAPI.swift in Sources */,
 				0579E4602BF81E7E00E5500D /* RegisterPresenter.swift in Sources */,
 				0579E47B2BF81E7E00E5500D /* Errors.swift in Sources */,
@@ -855,10 +855,10 @@
 				0579E4B72BFA485A00E5500D /* ItemDetailsPresenter.swift in Sources */,
 				0579E4A12BF81E7E00E5500D /* Persistable.swift in Sources */,
 				0579E4762BF81E7E00E5500D /* Status.swift in Sources */,
-				0579E4DC2BFA910F00E5500D /* ChatListService.swift in Sources */,
 				0579E4752BF81E7E00E5500D /* Category.swift in Sources */,
 				0579E4F62BFB45F000E5500D /* ProfileView.swift in Sources */,
 				0579E4DA2BFA8CC400E5500D /* Chat.swift in Sources */,
+				0579E4FE2BFE587B00E5500D /* ChatListTableView.swift in Sources */,
 				0579E45E2BF81E7E00E5500D /* MainTabBarView.swift in Sources */,
 				0579E4C72BFA594600E5500D /* CreateItemService.swift in Sources */,
 				0579E4D72BFA8C4000E5500D /* Message.swift in Sources */,

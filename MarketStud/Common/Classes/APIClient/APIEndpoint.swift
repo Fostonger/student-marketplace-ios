@@ -133,6 +133,7 @@ enum ItemEndpoint: Endpoint {
     case loadImage
     case fetchImage(itemId: Int64)
     case fetchItem(page: Int, filter: SearchFilter)
+    case fetchOneItem(itemId: Int64)
     
     func getEndpoint() -> String {
         switch self {
@@ -148,6 +149,8 @@ enum ItemEndpoint: Endpoint {
             return "api/v1/objects/download?itemId=\(itemId)"
         case .fetchItem(let page, let filter):
             return baseRequest + "search?\(filter.toQuery())&page=\(page)"
+        case .fetchOneItem(let itemId):
+            return baseRequest + "getInfo?itemId=\(itemId)"
         }
     }
     
@@ -155,14 +158,14 @@ enum ItemEndpoint: Endpoint {
         switch self {
         case .saveItem, .updateItem, .loadImage, .updateImage:
             return .post
-        case .fetchImage, .fetchItem:
+        case .fetchImage, .fetchItem, .fetchOneItem:
             return .get
         }
     }
     
     var headers: HTTPHeaders {
         switch self {
-        case .saveItem, .updateItem, .fetchItem:
+        case .saveItem, .updateItem, .fetchItem, .fetchOneItem:
             return [.accept("application/json")]
         case .fetchImage:
             return []
@@ -177,30 +180,33 @@ enum ItemEndpoint: Endpoint {
 enum ChatEndpoint: Endpoint {
     case createChat
     case sendMessage
-    case getMessages
-    case getChats
+    case pollMessages(userId: Int64, lastKnownMessageId: Int64)
+    case getMessages(chatId: Int64, page: Int)
+    case getChats(userId: Int64, page: Int)
     
     func getEndpoint() -> String {
         switch self {
         case .createChat:
-            return baseRequest + "create_chat"
+            return baseRequest + "create"
         case .sendMessage:
-            return baseRequest + "send_message"
-        case .getMessages:
-            return baseRequest + "get_messages"
-        case .getChats:
-            return baseRequest + "get_chats"
+            return baseRequest + "sendMessage"
+        case .pollMessages(let userId, let lastKnownMessageId):
+            return baseRequest + "pollMessages?userId=\(userId)&lastMessageId=\(lastKnownMessageId)"
+        case .getMessages(let chatId, let page):
+            return baseRequest + "messages/\(chatId)?page=\(page)"
+        case .getChats(let userId, let page):
+            return baseRequest + "user/\(userId)?page=\(page)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .createChat, .sendMessage:
-            return .post
-        case .getMessages, .getChats:
+        case .getMessages, .getChats, .pollMessages:
+            return .get
+        case .sendMessage, .createChat:
             return .post
         }
     }
     
-    private var baseRequest: String { "chat/" }
+    private var baseRequest: String { "api/v1/chat/" }
 }

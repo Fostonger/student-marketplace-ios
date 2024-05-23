@@ -1,40 +1,36 @@
 import UIKit
 
 protocol ChatListView: AnyObject {
-    func updateChatList(chats: [Chat])
+    func updateChats(with chats: [Chat])
     func showError(message: String)
 }
 
 import UIKit
 
+import UIKit
+
 class ChatListViewController: UIViewController, ChatListView {
     var presenter: ChatListPresenter!
-    private var chats: [Chat] = []
+
     private let tableView = UITableView()
-    
+    private var chats: [Chat] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        presenter.fetchChats()
-        presenter.connect()
+        presenter.fetchAll()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        presenter.disconnect()
-    }
-    
+
     private func setupUI() {
         title = "Chats"
         view.backgroundColor = .white
-        
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ChatCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "ChatCell")
         view.addSubview(tableView)
-        
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -42,14 +38,14 @@ class ChatListViewController: UIViewController, ChatListView {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    // MARK: - ChatListView Protocol
-    
-    func updateChatList(chats: [Chat]) {
+
+    // MARK: - ChatsListView Protocol
+
+    func updateChats(with chats: [Chat]) {
         self.chats = chats
         tableView.reloadData()
     }
-    
+
     func showError(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -61,16 +57,20 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chats.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
-        let chat = chats[indexPath.row]
-        cell.textLabel?.text = "\(chat.customerId) + \(chat.itemId)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
+        let chatData = presenter?.itemAndImage(for: chats[indexPath.row])
+        cell.configure(with: chatData?.0, item: chatData?.1, lastMessage: chatData?.2)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedChat = chats[indexPath.row]
-        presenter.navigateToChat(with: selectedChat)
+        presenter.selectChat(chat: selectedChat)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }

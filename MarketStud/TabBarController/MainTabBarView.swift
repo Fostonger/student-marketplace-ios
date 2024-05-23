@@ -5,15 +5,18 @@ final class MainTabBarController: UITabBarController {
     private let mainPageAssembly: MainPageAssembly
     private let createItemAssembly: CreateItemAssembly
     private let profileAssembly: ProfileAssembly
+    private let chatListAssembly: ChatListAssembly
     
     init(
         mainPageAssembly: MainPageAssembly,
         createItemAssembly: CreateItemAssembly,
-        profileAssembly: ProfileAssembly
+        profileAssembly: ProfileAssembly,
+        chatListAssembly: ChatListAssembly
     ) {
         self.mainPageAssembly = mainPageAssembly
         self.createItemAssembly = createItemAssembly
         self.profileAssembly = profileAssembly
+        self.chatListAssembly = chatListAssembly
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,7 +42,7 @@ final class MainTabBarController: UITabBarController {
         addItemViewController.tabBarItem = UITabBarItem(title: "Add Item", image: UIImage(systemName: "plus.circle"), tag: 1)
         
         let chatsViewController = UINavigationController(
-            rootViewController: UIViewController()
+            rootViewController: chatListAssembly.assemble()
         )
         chatsViewController.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(systemName: "message"), tag: 2)
         
